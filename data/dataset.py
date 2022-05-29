@@ -54,7 +54,6 @@ def unpack(base_folder: str, fer_path: str, ferplus_path: str) -> None:
 
 def majority(file_path: str) -> str:
     dataframe = pd.read_csv(file_path)
-
     save_path = os.path.join(os.path.dirname(sys.argv[0]), f'majority_{os.path.basename(file_path)}')
 
     emotion_votes = dataframe[[*LABELS]]
@@ -83,9 +82,30 @@ def info(file_path: str) -> None:
 
     for label in LABELS:
         n = len(dataframe[dataframe['class'] == label].index)
-        print(f'{label}: {n} ({n / total * 100:.2f}%)')
+        print(f'\t{label}: {n} ({n / total * 100:.2f}%)')
 
-    print(f'\ntotal: {total}')
+    print(f'\n\ttotal: {total}')
+
+
+def balance(file_path: str, max_images_per_class: int) -> str:
+    dataframe = pd.read_csv(file_path)
+    save_path = os.path.join(os.path.dirname(sys.argv[0]), f'balanced_{os.path.basename(file_path)}')
+
+    chunks = []
+    for label in LABELS[:-2]:
+        class_elements = dataframe[dataframe['class'] == label]
+        n = len(class_elements.index)
+
+        if n >= max_images_per_class:
+            chunks.append(class_elements.sample(max_images_per_class))
+        else:
+            chunks.append(pd.concat([class_elements] * round(max_images_per_class / n)))
+
+    dataframe = pd.concat(chunks)
+    dataframe = dataframe.sort_values(by='filename')
+    dataframe.to_csv(save_path, index=False)
+
+    return save_path
 
 
 if __name__ == '__main__':
@@ -103,13 +123,25 @@ if __name__ == '__main__':
     parser_info = subparsers.add_parser('info')
     parser_info.add_argument('-f', '--file_path', type=str, required=True)
 
+    parser_balance = subparsers.add_parser('balance')
+    parser_balance.add_argument('-f', '--file_path', type=str, required=True)
+    parser_balance.add_argument('-n', '--max_images_per_class', type=int)
+
     args = parser.parse_args()
 
     if args.mode == 'unpack':
         unpack(args.base_folder, args.fer_path, args.ferplus_path)
 
     elif args.mode == 'majority':
+        print('Info:')
         info(majority(args.file_path))
 
     elif args.mode == 'info':
+        print('Info:')
         info(args.file_path)
+
+    elif args.mode == 'balance':
+        print('Before:')
+        info(args.file_path)
+        print('\nAfter:')
+        info(balance(args.file_path, args.max_images_per_class))
