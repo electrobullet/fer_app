@@ -1,2 +1,3 @@
 -r data/requirements.txt
+-r models/requirements.txt
 -r notebooks/requirements.txt
