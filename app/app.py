@@ -113,7 +113,7 @@ if __name__ == '__main__':
     model_path = os.path.join(
         os.path.dirname(sys.argv[0]),
         'models',
-        '8_classes_EfficientNetV2B0_96x96_bs_256_weighted.onnx',
+        '5_classes_EfficientNetV2B1_96x96_bs_256_weighted.onnx',
     )
 
     emotion_recognizer = Model(
@@ -121,9 +121,9 @@ if __name__ == '__main__':
         input_size=(96, 96),
         emotions=[
             'anger',
-            'contempt',
-            'disgust',
-            'fear',
+            # 'contempt',
+            # 'disgust',
+            # 'fear',
             'happiness',
             'neutral',
             'sadness',
