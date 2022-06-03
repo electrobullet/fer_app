@@ -1,3 +1,5 @@
 venv
 data/images
 **pycache**
+models
+.ipynb_checkpoints

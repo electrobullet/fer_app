@@ -27,11 +27,6 @@ def unpack(base_folder: str, fer_path: str, ferplus_path: str) -> None:
         'PrivateTest': 'test',
     }
 
-    os.mkdir(base_folder)
-
-    for folder in folder_aliases.values():
-        os.mkdir(os.path.join(base_folder, folder))
-
     dataframe = pd.concat(
         [
             pd.read_csv(ferplus_path),
@@ -45,6 +40,11 @@ def unpack(base_folder: str, fer_path: str, ferplus_path: str) -> None:
         subset = subset.rename(columns={'Image name': 'filename'})
         subset = subset[['filename', *LABELS]]
         subset.to_csv(os.path.join(base_folder, '..', f'{value}.csv'), index=False)
+
+    os.mkdir(base_folder)
+
+    for folder in folder_aliases.values():
+        os.mkdir(os.path.join(base_folder, folder))
 
     for usage, image_name, pixels in dataframe[['Usage', 'Image name', 'pixels']].values:
         image = Image.fromarray(np.fromstring(pixels, np.uint8, 48 * 48, ' ').reshape(48, 48))
