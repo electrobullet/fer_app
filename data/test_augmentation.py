@@ -17,7 +17,7 @@ if __name__ == '__main__':
         width_shift_range=0.08,
         height_shift_range=0.08,
         zoom_range=0.05,
-        shear_range=np.rad2deg(np.arctan(0.05)),  # used to set the value in fractions instead of the angle
+        shear_range=np.rad2deg(np.arctan(0.05)),  # used to set the value by fraction instead of an angle
         horizontal_flip=True,
         fill_mode='reflect',
     )
