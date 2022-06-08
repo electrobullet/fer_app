@@ -2,19 +2,25 @@
 As part of my bachelor's thesis on the classification of human emotions by facial image, I trained many models of the EfficientNetV2 family on FERPlus dataset.  
 
 ## Results
-To get acquainted with few results, you can use [jupyter notebooks](/notebooks/).  
+| Model                                              | Accuracy | Precision | Recall | F1 Score |
+| :------------------------------------------------- | :------- | :-------- | :----- | :------- |
+| [5_classes_EfficientNetV2B1_96x96_bs_256_weighted] | 88.34%   | 86.29%    | 87.08% | 86.68%   |
+| [8_classes_EfficientNetV2B0_96x96_bs_256_weighted] | 84.25%   | 72.75%    | 68.49% | 70.55%   |
+| [8_classes_EfficientNetV2B1_96x96_bs_256_weighted] | 85.24%   | 73.97%    | 68.75% | 71.27%   |
+| [8_classes_EfficientNetV2S_96x96_bs_32]            | 85.81%   | 75.12%    | 64.22% | 69.25%   |
+
+<table>
+    <tr>
+        <td><img src='resources/5_classes_EfficientNetV2B1_96x96_bs_256_weighted.png'></td>
+        <td><img src='resources/8_classes_EfficientNetV2B0_96x96_bs_256_weighted.png'></td>
+    </tr>
+    <tr>
+        <td>5_classes_EfficientNetV2B1_96x96_bs_256_weighted</td>
+        <td>8_classes_EfficientNetV2B0_96x96_bs_256_weighted</td>
+    </tr>
+</table>
 
 >Go to Releases to get trained models in ONNX format.
-
-FERPlus is a very unbalanced dataset, so I decided to abandon poorly represented classes, because they are detected so-so.  
-
-Here are the results for 5 classes.
-
-| Accuracy | Precision | Recall | F1 Score |
-| :------- | :-------- | :----- | :------- |
-| 88.34%   | 86.29%    | 87.08% | 86.68%   |
-
-![confusion_matrix](/resources/confusion_matrix.png)
 
 ## Demo app
 ### Example
@@ -29,3 +35,8 @@ Here are the results for 5 classes.
 ```
 python app/app.py
 ```
+
+[5_classes_EfficientNetV2B1_96x96_bs_256_weighted]:/notebooks/5_classes_EfficientNetV2B1_96x96_bs_256_weighted.ipynb
+[8_classes_EfficientNetV2B0_96x96_bs_256_weighted]:/notebooks/8_classes_EfficientNetV2B0_96x96_bs_256_weighted.ipynb
+[8_classes_EfficientNetV2B1_96x96_bs_256_weighted]:/notebooks/8_classes_EfficientNetV2B1_96x96_bs_256_weighted.ipynb
+[8_classes_EfficientNetV2S_96x96_bs_32]:/notebooks/8_classes_EfficientNetV2S_96x96_bs_32.ipynb
