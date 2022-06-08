@@ -4,7 +4,7 @@ As part of my bachelor's thesis on the classification of human emotions by facia
 ## Results
 To get acquainted with few results, you can use [jupyter notebooks](/notebooks/).  
 
->The ONNX models are in the [app/models](/app/models/) folder.  
+>Go to Releases to get trained models in ONNX format.
 
 FERPlus is a very unbalanced dataset, so I decided to abandon poorly represented classes, because they are detected so-so.  
 
@@ -18,12 +18,14 @@ Here are the results for 5 classes.
 
 ## Demo app
 ### Example
-![app_window](/resources/app_window.bmp)
+![app_window](/resources/app_window.png)
 
 ### How to run
 1. Download [face-detection-retail-0044](https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/public/face-detection-retail-0044) model from [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) repository and place it in the [app/models](/app/models/) folder.
 
-2. Run the program.
+2. Download a facial expression recognition model from Releases and place it in the [app/models](/app/models/) folder.
+
+3. Run the program.
 ```
 python app/app.py
 ```
