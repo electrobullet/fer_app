@@ -17,7 +17,7 @@ Go to Releases to get trained models in ONNX format.
         <td><img src='resources/8_classes_EfficientNetV2B0_96x96_bs_256_weighted.png'></td>
     </tr>
     <tr>
-        <td>5_classes_EfficientNetV2B1_96x96_bs_256_weighted]</td>
+        <td>5_classes_EfficientNetV2B1_96x96_bs_256_weighted</td>
         <td>8_classes_EfficientNetV2B0_96x96_bs_256_weighted</td>
     </tr>
 </table>
@@ -33,8 +33,8 @@ Go to Releases to get trained models in ONNX format.
 python app/app.py
 ```
 
-### Screenshot
-![app_window](/resources/app_window.png)
+### How it looks
+![app_window](/resources/app_window.gif)
 
 [5_classes_EfficientNetV2B1_96x96_bs_256_weighted]:/notebooks/5_classes_EfficientNetV2B1_96x96_bs_256_weighted.ipynb
 [8_classes_EfficientNetV2B0_96x96_bs_256_weighted]:/notebooks/8_classes_EfficientNetV2B0_96x96_bs_256_weighted.ipynb
