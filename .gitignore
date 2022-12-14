@@ -3,3 +3,5 @@ data/images
 **pycache**
 models/*/
 .ipynb_checkpoints
+app/models
+!app/models/README.md

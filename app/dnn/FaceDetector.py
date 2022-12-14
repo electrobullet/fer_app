@@ -5,5 +5,5 @@ import numpy as np
 
 class FaceDetector(ABC):
     @abstractmethod
-    def predict(self, *args, **kwargs) -> np.ndarray:
+    def predict(self, image: np.ndarray, threshold: float = 0.8) -> np.ndarray:
         pass

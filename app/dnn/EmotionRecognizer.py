@@ -17,11 +17,11 @@ class EmotionRecognizer(ABC):
     }
 
     @abstractproperty
-    def emotions(self) -> List[str]:
+    def emotions(self) -> List[str]:  # type: ignore
         pass
 
     @abstractproperty
-    def colors(self) -> List[Tuple[int, int, int]]:
+    def colors(self) -> List[Tuple[int, int, int]]:  # type: ignore
         pass
 
     @abstractmethod
